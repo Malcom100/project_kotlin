@@ -1,12 +1,10 @@
 package adneom.project_kotlin.twilio
 
-import adneom.project_kotlin.MyApplication
 import adneom.project_kotlin.R
 import adneom.project_kotlin.models.User
 import adneom.project_kotlin.picture.PictureActivity
 import android.Manifest
 import android.content.pm.PackageManager
-import android.opengl.Visibility
 import android.os.Bundle
 import android.os.Handler
 import android.support.v4.app.ActivityCompat

@@ -56,6 +56,8 @@ class User  : Parcelable {
         email = spurce.readString()
         phone = spurce.readString()
         website = spurce.readString()
+        address = spurce.readParcelable(Address::class.java.classLoader)
+        company = spurce.readParcelable(Company::class.java.classLoader)
     }
 
     companion object CREATOR : Parcelable.Creator<User> {
@@ -75,6 +77,8 @@ class User  : Parcelable {
         dest!!.writeString(email)
         dest!!.writeString(phone)
         dest!!.writeString(website)
+        dest.writeParcelable(address,flags)
+        dest.writeParcelable(company,flags)
     }
 
     override fun describeContents(): Int {

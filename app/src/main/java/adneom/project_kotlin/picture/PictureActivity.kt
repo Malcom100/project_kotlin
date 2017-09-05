@@ -12,8 +12,6 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.support.v4.app.ActivityCompat
 import android.widget.Toast
-//impor layout
-import kotlinx.android.synthetic.main.activity_picture.*
 
 class PictureActivity : AppCompatActivity() {
 
@@ -83,7 +81,7 @@ class PictureActivity : AppCompatActivity() {
     private fun showCamera() {
         var fragment : PictureFragment? = supportFragmentManager.findFragmentById(R.id.containner) as? PictureFragment
         if(fragment == null){
-            fragment = PictureFragment.newInstance()
+            fragment = PictureFragment.newInstance(myUser as User)
             supportFragmentManager.beginTransaction().replace(R.id.container,fragment,"FRG").commit()
         }
 
