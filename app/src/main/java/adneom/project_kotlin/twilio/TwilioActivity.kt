@@ -22,4 +22,9 @@ class TwilioActivity : AppCompatActivity() {
         //create presenter :
         presenter = TwilioPresenter(fragment,applicationContext,this)
     }
+
+    override fun onResume() {
+        super.onResume()
+        println("in on resume")
+    }
 }
