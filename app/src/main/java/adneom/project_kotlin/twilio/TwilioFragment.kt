@@ -2,8 +2,11 @@ package adneom.project_kotlin.twilio
 
 import adneom.project_kotlin.MyApplication
 import adneom.project_kotlin.R
+import adneom.project_kotlin.models.User
+import adneom.project_kotlin.picture.PictureActivity
 import android.Manifest
 import android.content.pm.PackageManager
+import android.opengl.Visibility
 import android.os.Bundle
 import android.os.Handler
 import android.support.v4.app.ActivityCompat
@@ -16,13 +19,16 @@ import com.twilio.client.*
 import kotlinx.android.synthetic.main.fragment_twilio.*
 
 
-class TwilioFragment : Fragment(), TwilioContract.View, DeviceListener, ConnectionListener {
+class TwilioFragment : Fragment(), TwilioContract.View, DeviceListener, ConnectionListener, View.OnClickListener {
+
     private lateinit var mPresenter : TwilioContract.Presenter
     val RECORD_AUDIO_CODE : Int = 89
 
     private lateinit var device : Device
 
     private lateinit var newState : String
+
+    private var myUser : User? = null
 
     companion object {
         fun newInstance() : TwilioFragment {
@@ -47,6 +53,8 @@ class TwilioFragment : Fragment(), TwilioContract.View, DeviceListener, Connecti
         }else{
             twilio()
         }
+
+        btn_picture.setOnClickListener(this)
     }
 
     fun twilio() {
@@ -70,11 +78,25 @@ class TwilioFragment : Fragment(), TwilioContract.View, DeviceListener, Connecti
 
     val hh : Handler = Handler()
     val r : Runnable = Runnable() {
-        kotlin.run { value_state.setText(newState) }
+        kotlin.run {
+            value_state.setText(newState)
+            btn_picture.visibility = View.VISIBLE
+        }
     }
     override fun updateState(value: String) {
         newState = value
         hh.post(r)
+    }
+
+    override fun saveUser(user: User) {
+        myUser = user
+    }
+
+    override fun onClick(v: View?) {
+        when(v!!.id) {
+            R.id.btn_picture -> activity.startActivity(PictureActivity.redirectToPictureActivity(activity,myUser))
+            else -> println("no choice !!")
+        }
     }
 
 
