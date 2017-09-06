@@ -10,6 +10,9 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permisson.READ_GSERVICES" />
+
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
@@ -43,6 +46,14 @@
         </receiver>
 
         <activity android:name=".picture.PictureActivity"></activity>
+
+        <meta-data android:name="com.google.gms.version"
+            android:value="2" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBiJkUNov7OxjG9YliwxN-RPy37eq5i4co" />
+
     </application>
 
 </manifest>
