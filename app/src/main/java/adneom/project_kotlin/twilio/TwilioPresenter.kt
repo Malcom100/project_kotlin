@@ -19,6 +19,7 @@ class TwilioPresenter (mView : TwilioContract.View, context : Context, activity 
     private lateinit var ctxt : Context
     private lateinit var act : Activity
     private lateinit var myUser : User
+    private var myUsers : ArrayList<User> = ArrayList<User>()
     init {
         view = mView
         view.setPresenter(this)
@@ -74,6 +75,7 @@ class TwilioPresenter (mView : TwilioContract.View, context : Context, activity 
                 {
                     if(isNotNullView()){
                         view.saveUser(myUser)
+                        view.saveUsers(myUsers)
                         view.updateState("the response is equal to ".plus(number))
                     }
                 }
@@ -88,6 +90,7 @@ class TwilioPresenter (mView : TwilioContract.View, context : Context, activity 
         var listUser : MutableList<User> = mutableListOf<User>()
         for(u in users){
             listUser.add(u)
+            myUsers.add(u)
         }
         number = users.size
         return listUser

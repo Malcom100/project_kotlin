@@ -5,6 +5,9 @@ import android.os.Bundle
 
 import adneom.project_kotlin.R
 import adneom.project_kotlin.models.User
+import adneom.project_kotlin.picture.map.MapContract
+import adneom.project_kotlin.picture.map.MapFragment
+import adneom.project_kotlin.picture.map.MapPresenter
 import adneom.project_kotlin.twilio.TwilioActivity
 import android.Manifest
 import android.content.Context
@@ -15,17 +18,26 @@ import android.widget.Toast
 
 class PictureActivity : AppCompatActivity() {
 
-    private lateinit var presenter : PictureContract.Presenter
+    private lateinit var presenterPicture : PictureContract.Presenter
+    private lateinit var presenterMap : MapContract.Presenter
     private var myUser : User? = null
 
     companion object {
         val CAMERA_VALUE : Int = 589;
         val KEY_TEST : String = "test_key"
         val KEY_USER : String = "user_key"
+        val KEY_USERS_LIST : String = "list_key"
 
         fun redirectToPictureActivity(cxt : Context, user : User?) : Intent {
             var intent : Intent = Intent(cxt,PictureActivity::class.java)
             intent.putExtra(KEY_USER,user)
+            return intent
+        }
+
+        fun redirectToPictureActivity(cxt : Context, user : User?, users : ArrayList<User>?) : Intent {
+            var intent : Intent = Intent(cxt,PictureActivity::class.java)
+            intent.putExtra(KEY_USER,user)
+            intent.putParcelableArrayListExtra(KEY_USERS_LIST,users)
             return intent
         }
     }
@@ -55,6 +67,7 @@ class PictureActivity : AppCompatActivity() {
 
         }else{
             showCamera()
+            showMap()
         }
     }
 
@@ -65,6 +78,7 @@ class PictureActivity : AppCompatActivity() {
             {
                 if(grantResults.size > 0){
                     showCamera()
+                    showMap()
                 }
             }
             else ->
@@ -86,6 +100,17 @@ class PictureActivity : AppCompatActivity() {
         }
 
         //create the presenter
-        presenter = PicturePresenter(fragment)
+        presenterPicture = PicturePresenter(fragment)
+    }
+
+    private fun showMap(){
+        var mapFragment : MapFragment? = supportFragmentManager.findFragmentById(R.id.container_map) as? MapFragment
+        if(mapFragment == null){
+            mapFragment = MapFragment.newInstance()
+            supportFragmentManager.beginTransaction().replace(R.id.container_map,mapFragment,"FRG_MAP").commit()
+        }
+
+        //create the presenter
+        presenterMap = MapPresenter(mapFragment)
     }
 }

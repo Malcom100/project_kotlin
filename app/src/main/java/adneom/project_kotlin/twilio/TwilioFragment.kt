@@ -3,6 +3,7 @@ package adneom.project_kotlin.twilio
 import adneom.project_kotlin.R
 import adneom.project_kotlin.models.User
 import adneom.project_kotlin.picture.PictureActivity
+import adneom.project_kotlin.users.UsersActivity
 import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Bundle
@@ -27,6 +28,8 @@ class TwilioFragment : Fragment(), TwilioContract.View, DeviceListener, Connecti
     private lateinit var newState : String
 
     private var myUser : User? = null
+
+    private var users : ArrayList<User>? = null
 
     companion object {
         fun newInstance() : TwilioFragment {
@@ -53,6 +56,7 @@ class TwilioFragment : Fragment(), TwilioContract.View, DeviceListener, Connecti
         }
 
         btn_picture.setOnClickListener(this)
+        btn_users.setOnClickListener(this)
     }
 
     fun twilio() {
@@ -79,6 +83,7 @@ class TwilioFragment : Fragment(), TwilioContract.View, DeviceListener, Connecti
         kotlin.run {
             value_state.setText(newState)
             btn_picture.visibility = View.VISIBLE
+            btn_users.visibility = View.VISIBLE
         }
     }
     override fun updateState(value: String) {
@@ -90,9 +95,14 @@ class TwilioFragment : Fragment(), TwilioContract.View, DeviceListener, Connecti
         myUser = user
     }
 
+    override fun saveUsers(users: ArrayList<User>) {
+        this.users = users
+    }
+
     override fun onClick(v: View?) {
         when(v!!.id) {
-            R.id.btn_picture -> activity.startActivity(PictureActivity.redirectToPictureActivity(activity,myUser))
+            R.id.btn_picture -> activity.startActivity(PictureActivity.redirectToPictureActivity(activity,myUser,users))//activity.startActivity(PictureActivity.redirectToPictureActivity(activity,myUser))
+            R.id.btn_users -> activity.startActivity(UsersActivity.redirectIntent(this.activity,users!!))
             else -> println("no choice !!")
         }
     }

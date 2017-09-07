@@ -10,6 +10,7 @@ interface TwilioContract {
     interface View : BaseView<Presenter> {
         fun updateState(value : String)
         fun saveUser(user: User)
+        fun saveUsers(users : ArrayList<User>)
     }
 
     interface Presenter : BasePresenter {
