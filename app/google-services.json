@@ -90,14 +90,6 @@
       },
       "oauth_client": [
         {
-          "client_id": "384437120751-o8efsher9ndas0v17fdm2kcv3bjehc6n.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "adneom.project_kotlin",
-            "certificate_hash": "d59eb4d0c78c4e1d334b8c7a5648452060982fe6"
-          }
-        },
-        {
           "client_id": "384437120751-7lfn1goqfqegggp1allg2pqche1hp7hs.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -112,13 +104,8 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 2,
-          "other_platform_oauth_client": [
-            {
-              "client_id": "384437120751-7lfn1goqfqegggp1allg2pqche1hp7hs.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "status": 1,
+          "other_platform_oauth_client": []
         },
         "ads_service": {
           "status": 2
