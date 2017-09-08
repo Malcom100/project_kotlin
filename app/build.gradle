@@ -40,6 +40,10 @@ dependencies {
     // explicitly depend on RxJava's latest version for bug fixes and new features.
     //OkHttp
     //gson
+
+    //recycler view
+
+    //bottom navigation view
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.twilio:client-android:1.2.18'
@@ -52,14 +56,10 @@ dependencies {
     compile 'com.squareup.okhttp3:okhttp:3.8.1'
     compile 'com.google.code.gson:gson:2.3.1'
     compile 'com.google.android.gms:play-services:11.0.4'
-    testCompile 'junit:junit:4.12'
-
-    //recycler view
     compile 'com.android.support:recyclerview-v7:25.3.1'
-
-    //bottom navigation view
     compile 'com.android.support:design:25.3.1'
     compile 'com.android.support:support-v4:25.3.1'
+    testCompile 'junit:junit:4.12'
 }
 repositories {
     mavenCentral()

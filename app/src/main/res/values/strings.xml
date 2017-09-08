@@ -12,4 +12,10 @@
     <string name="txt_email">Email</string>
 
     <string name="btn_users">Go to list !</string>
+
+    <string name="menu_item_add_user">new user</string>
+    <string name="menu_item_choice_2">second</string>
+    <string name="menu_item_choice_3">third</string>
+
+    <string name="btn_nav">My navigation</string>
 </resources>
