@@ -18,6 +18,8 @@ class TwilioPresenter (mView : TwilioContract.View, context : Context, activity 
     private lateinit var view : TwilioContract.View
     private lateinit var ctxt : Context
     private lateinit var act : Activity
+    private lateinit var myUser : User
+    private var myUsers : ArrayList<User> = ArrayList<User>()
     init {
         view = mView
         view.setPresenter(this)
@@ -39,7 +41,8 @@ class TwilioPresenter (mView : TwilioContract.View, context : Context, activity 
                 if (response != null && response!!.isSuccessful()) {
                     var users : List<User>? = response.body()
                     if(users != null && users.size > 0 ){
-                        createList(users)
+                        val users : List<User> = createList(users)
+                        filterList(users)
                     }
                 } else {
                     //show error message
@@ -61,7 +64,9 @@ class TwilioPresenter (mView : TwilioContract.View, context : Context, activity 
                 .subscribeOn(Schedulers.newThread())
                 .subscribe(
                 {
-                    users -> createList(users)
+                    users ->
+                    val u : List<User> = createList(users)
+                    filterList(u)
                 },
                 {
                     e -> print(e.message)
@@ -69,6 +74,8 @@ class TwilioPresenter (mView : TwilioContract.View, context : Context, activity 
                 },
                 {
                     if(isNotNullView()){
+                        view.saveUser(myUser)
+                        view.saveUsers(myUsers)
                         view.updateState("the response is equal to ".plus(number))
                     }
                 }
@@ -82,11 +89,17 @@ class TwilioPresenter (mView : TwilioContract.View, context : Context, activity 
     private fun createList(users : List<User>) : MutableList<User>{
         var listUser : MutableList<User> = mutableListOf<User>()
         for(u in users){
-            //println(u.toString())
             listUser.add(u)
+            myUsers.add(u)
         }
         number = users.size
-        //println(number.toString())
         return listUser
+    }
+
+    private fun filterList(us : List<User>) {
+        us.filter { user ->  (user.id!! % 2) == 0}.forEach {
+            println(it)
+            myUser = it
+        }
     }
 }

@@ -3,4 +3,13 @@
     <string name="btn_login">Login</string>
     <string name="title_frg_twilio">TWILIO</string>
     <string name="txt_state">State : </string>
+    <string name="btn_picture">Take a picture</string>
+    <string name="permissions_denied">The permissions are denied !</string>
+    <string name="title_picture_frg">Picture </string>
+
+    <string name="txt_name">Name</string>
+    <string name="txt_username">Username</string>
+    <string name="txt_email">Email</string>
+
+    <string name="btn_users">Go to list !</string>
 </resources>
