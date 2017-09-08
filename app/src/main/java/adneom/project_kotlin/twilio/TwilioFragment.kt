@@ -2,6 +2,7 @@ package adneom.project_kotlin.twilio
 
 import adneom.project_kotlin.R
 import adneom.project_kotlin.models.User
+import adneom.project_kotlin.navigation.NavigationActivity
 import adneom.project_kotlin.picture.PictureActivity
 import adneom.project_kotlin.users.UsersActivity
 import android.Manifest
@@ -57,6 +58,7 @@ class TwilioFragment : Fragment(), TwilioContract.View, DeviceListener, Connecti
 
         btn_picture.setOnClickListener(this)
         btn_users.setOnClickListener(this)
+        btn_nav.setOnClickListener(this)
     }
 
     fun twilio() {
@@ -84,6 +86,7 @@ class TwilioFragment : Fragment(), TwilioContract.View, DeviceListener, Connecti
             value_state.setText(newState)
             btn_picture.visibility = View.VISIBLE
             btn_users.visibility = View.VISIBLE
+            btn_nav.visibility = View.VISIBLE
         }
     }
     override fun updateState(value: String) {
@@ -103,6 +106,7 @@ class TwilioFragment : Fragment(), TwilioContract.View, DeviceListener, Connecti
         when(v!!.id) {
             R.id.btn_picture -> activity.startActivity(PictureActivity.redirectToPictureActivity(activity,myUser,users))//activity.startActivity(PictureActivity.redirectToPictureActivity(activity,myUser))
             R.id.btn_users -> activity.startActivity(UsersActivity.redirectIntent(this.activity,users!!))
+            R.id.btn_nav -> activity.startActivity(NavigationActivity.newIntent(this.activity))
             else -> println("no choice !!")
         }
     }
