@@ -10,4 +10,8 @@
     <color name="list_color_one">#64FFDA</color>
     <color name="list_color_two">#82B1FF</color>
     <color name="list_color_three">#E57373</color>
+
+    <color name="view_one">#EDE7F6</color>
+    <color name="view_two">#E0F2F1</color>
+    <color name="view_three">#FFE0B2</color>
 </resources>
