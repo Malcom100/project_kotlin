@@ -53,7 +53,8 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyBiJkUNov7OxjG9YliwxN-RPy37eq5i4co" />
 
-        <activity android:name=".users.UsersActivity"></activity>
+        <activity android:name=".users.UsersActivity" />
+        <activity android:name=".navigation.NavigationActivity"></activity>
     </application>
 
 </manifest>
