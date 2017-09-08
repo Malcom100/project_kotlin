@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_item_add_user"
+        android:icon="@drawable/ic_add_users"
+        android:title="@string/menu_item_add_user" />
+
+    <item
+        android:id="@+id/menu_item_choice_2"
+        android:icon="@drawable/ic_add_users"
+        android:title="@string/menu_item_choice_2" />
+
+    <item
+        android:id="@+id/menu_item_choice_3"
+        android:icon="@drawable/ic_add_users"
+        android:title="@string/menu_item_choice_3" />
+</menu>
